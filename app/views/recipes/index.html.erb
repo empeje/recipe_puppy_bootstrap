@@ -1,4 +1,3 @@
-<% require 'htmlentities' %>
 <h1>Recipes for <%= @search_term %></h1>
 
 <table border="1">
@@ -10,7 +9,7 @@
   <% @recipes.each do |recipe| %>
     <tr class=<%= cycle('even', 'odd') %>>
       <td><%= link_to image_tag(recipe["thumbnail"]), recipe["href"] %></td>
-      <td><%= link_to HTMLEntities.new.decode(recipe["title"]), recipe["href"] %></td>
+      <td><%= link_to sanitize(recipe["title"]), recipe["href"] %></td>
       <td><%= recipe["ingredients"] %></td>
     </tr>
   <% end %>
